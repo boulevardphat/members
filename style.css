@@ -26,7 +26,7 @@ body {
     padding: 0; 
     padding-top: var(--header-height);
     min-height: 100vh;
-    overflow-x: hidden; /* CHỐT: Chặn tuyệt đối cuộn ngang */
+    overflow-x: hidden; /* Chặn cuộn ngang tuyệt đối */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -40,7 +40,7 @@ body {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background: rgba(255, 255, 255, 0.9); /* Tăng độ che phủ nền */
+    background: rgba(255, 255, 255, 0.95); /* Tăng độ đậm nền để che nội dung khi cuộn */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -329,7 +329,7 @@ body {
     position: relative;
     margin: 0; 
     z-index: 1;
-    /* Giữ transition đơn giản để tránh xung đột JS */
+    /* Transition chuẩn cho desktop */
     transition: transform 0.4s ease, opacity 0.8s ease-out;
     transform-origin: center center;
 }
@@ -349,7 +349,7 @@ body {
     flex-shrink: 0;
 }
 
-/* --- DESKTOP LOGIC --- */
+/* --- DESKTOP LOGIC (GIỮ NGUYÊN) --- */
 @media (min-width: 769px) {
     .card-container:hover {
         z-index: 10;
@@ -362,22 +362,21 @@ body {
         position: fixed;
         z-index: 9999 !important;
         margin: 0 !important;
-        /* Desktop cho phép JS tự do hơn một chút */
         box-shadow: 0 25px 50px rgba(0,0,0,0.5);
     }
 }
 
-/* --- MOBILE & TABLET LOGIC (QUAN TRỌNG: FIX LỖI Ở ĐÂY) --- */
+/* --- MOBILE & TABLET LOGIC (SỬA LỖI MẠNH TAY) --- */
 @media (max-width: 768px) {
-    /* 1. HEADER FIX: Đảm bảo gọn gàng, không bị tràn */
+    /* 1. HEADER FIX: Gọn gàng, không bị tràn */
     .site-header { 
         flex-direction: column; 
         height: auto; 
-        padding: 8px 10px; /* Giảm padding */
+        padding: 8px 10px; 
         gap: 8px; 
     }
     .header-logo-img { 
-        max-height: 40px; /* Logo nhỏ lại */
+        max-height: 40px; 
     }
     .main-nav { 
         width: 100%; 
@@ -394,7 +393,7 @@ body {
     }
     .nav-link::after { display: none; } 
     
-    body { padding-top: 120px; } /* Đẩy nội dung xuống vừa đủ */
+    body { padding-top: 120px; } 
 
     /* 2. LAYOUT FIX */
     .cover-container { height: 200px; }
@@ -409,42 +408,48 @@ body {
         gap: 20px; 
     }
     
-    /* 3. CARD LIST (Lúc chưa bấm vào) */
+    /* 3. CARD LIST (Trạng thái bình thường trên list) */
     .card-container { 
-        width: 90% !important; /* Bắt buộc */
+        width: 90% !important; /* Đảm bảo luôn vừa màn hình */
         max-width: 400px !important; 
         height: auto !important;
         aspect-ratio: 450 / 280;
         margin: 0 !important;
-        margin-bottom: 15px !important;
-        transform: none !important; /* Tắt transform lung tung của JS */
+        margin-bottom: 15px !important; /* Khoảng cách giữa các thẻ */
+        
+        /* Reset hết vị trí do JS tính sai */
+        transform: none !important; 
         left: auto !important;
         top: auto !important;
+        position: relative !important; 
     }
     
     .card-placeholder { display: none !important; } 
 
-    /* 4. CARD FOCUSED (Lúc bấm vào xem chi tiết) */
-    /* Dùng !important để ĐÈ bẹp các style inline mà JS thêm vào */
+    /* 4. CARD FOCUSED (FIX LỖI NHẢY LUNG TUNG KHI BẤM VÀO) */
     .card-container.is-focused {
-        position: fixed !important;
-        z-index: 9999 !important;
+        /* Bắt buộc dùng Fixed để căn giữa màn hình */
+        position: fixed !important; 
+        z-index: 10000 !important; /* Cao hơn tất cả */
         
-        /* Căn giữa màn hình tuyệt đối */
+        /* Căn giữa tuyệt đối */
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
         
-        /* Kích thước chuẩn khi zoom lên */
+        /* Kích thước khi mở lên */
         width: 90vw !important; 
-        max-width: 450px !important;
+        max-width: 420px !important; /* Giới hạn không quá to */
         height: auto !important;
         aspect-ratio: 450 / 280;
         
+        /* Xóa margin để tránh bị lệch tâm */
         margin: 0 !important;
+        
         box-shadow: 0 25px 50px rgba(0,0,0,0.5);
     }
     
+    /* 5. Footer Fix */
     .footer-content { grid-template-columns: 1fr; gap: 30px; text-align: left; }
 }
 
