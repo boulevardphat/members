@@ -7,6 +7,27 @@ const GROUP_HEADERS = {
     4: "image/headers/header_to_4.jpg"  
 };
 
+// --- 1. RUNTIME CSS PATCH (VÁ LỖI CSS BẰNG JS) ---
+// Chức năng: Ép thẻ không bị tràn màn hình mobile mà không cần sửa file style.css
+(function injectMobileFix() {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @media (max-width: 768px) {
+            .card-container {
+                width: 90% !important; /* Ép thẻ co lại theo màn hình */
+                max-width: 450px !important;
+                left: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            /* Sửa lỗi header bị che hoặc vỡ */
+            .site-header { box-sizing: border-box; }
+            .main-nav { flex-wrap: wrap; justify-content: center; }
+        }
+    `;
+    document.head.appendChild(style);
+})();
+
 // --- GLOBAL AUDIO PLAYER ---
 const audioPlayer = new Audio();
 audioPlayer.loop = true; 
@@ -219,18 +240,12 @@ function createCard(data, index) {
     const zodiacImgTag = zodiacFile ? `<img src="image/${zodiacFile}" class="zodiac-bg" alt="Zodiac">` : '';
     const headerSrc = GROUP_HEADERS[data.group] || "image/headers/header_template.jpg";
 
-    // --- MUSIC LOGIC GENERATION ---
-    // Tự động tạo tên file nhạc từ tên file ảnh
-    // Vd: image/avatars/THMA.jpg -> music/THMA.mp3 (lấy folder music ở root theo yêu cầu)
     const imgFileName = data.img.split('/').pop().replace(/\.[^/.]+$/, "");
     const musicSrc = `music/${imgFileName}.mp3`;
     
-    // SỬA ĐỔI: Lấy ảnh bìa đĩa từ folder image/musiccover thay vì dùng avatar
-    // Giữ nguyên tên file (vd: THMA.jpg)
     const avatarFileName = data.img.split('/').pop();
     const labelStyle = `background-image: url('image/musiccover/${avatarFileName}');`;
     
-    // Luôn tạo đĩa Vinyl (đã loại bỏ CD)
     const musicDiskHTML = `
         <div class="disk-container" data-song="${musicSrc}">
             <div class="disk-body">
@@ -242,21 +257,16 @@ function createCard(data, index) {
 
     container.innerHTML = `
         <div class="card-inner">
-            <!-- MUSIC DISK (Nằm trong inner nhưng dưới card-front) -->
             ${musicDiskHTML}
-
-            <!-- FRONT -->
             <div class="card-face card-front">
                 ${zodiacImgTag}
                 <div class="header-image-container">
                     <img src="${headerSrc}" alt="Header Image" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#334155';">
                 </div>
-
                 <div class="card-content">
                     <div class="photo-area">
                         <img src="${data.img}" alt="${data.name}" onerror="this.src='https://placehold.co/105x140?text=No+Image';">
                     </div>
-                    
                     <div class="info-area">
                         <div class="field">
                             <span class="label">Họ và tên:</span>
@@ -286,14 +296,12 @@ function createCard(data, index) {
                     </svg>
                 </div>
             </div>
-
-            <!-- BACK -->
             <div class="card-face card-back">
                 <div class="back-container">
                     <div class="bio-title">Hành trình trưởng thành</div>
                     <div class="bio-scroll-area">
                         <p class="bio-text">
-                            ${data.bio || "Thành viên này chưa cập nhật thông tin chi tiết. Nhưng chắc chắn là một mảnh ghép không thể thiếu của A2!"}
+                            ${data.bio || "Thành viên này chưa cập nhật thông tin chi tiết."}
                         </p>
                     </div>
                     <div class="scroll-indicator">
@@ -307,13 +315,11 @@ function createCard(data, index) {
         </div>
     `;
 
-    // Card Click Event
     container.addEventListener('click', (e) => {
         e.stopPropagation();
         handleCardClick(container);
     });
 
-    // Disk Click Event (Toggle In/Out)
     const diskContainer = container.querySelector('.disk-container');
     const diskBody = container.querySelector('.disk-body');
     
@@ -334,13 +340,11 @@ let activeCard = null;
 let placeholder = null; 
 
 function handleCardClick(card) {
-    // Nếu click vào thẻ đang active thì lật mặt sau
     if (activeCard === card) {
         card.classList.toggle('is-flipped');
         return;
     }
 
-    // Nếu có thẻ khác đang mở thì đóng nó lại
     if (activeCard) {
         closeCard();
     }
@@ -351,33 +355,53 @@ function handleCardClick(card) {
     placeholder.className = 'card-placeholder';
     placeholder.style.flex = window.getComputedStyle(card).flex;
     
+    // Nếu là mobile, ta không cần giữ chỗ chính xác vì layout cột đơn
+    if (window.innerWidth <= 768) {
+         placeholder.style.display = 'none';
+    }
+    
     card.parentNode.insertBefore(placeholder, card);
 
+    // --- FIX LỖI NHẢY HÌNH TRÊN MOBILE ---
+    // Thay vì lấy rect.left (có thể bị âm hoặc sai do thẻ quá to),
+    // ta set vị trí cố định ngay lập tức.
     card.style.position = 'fixed';
-    card.style.top = rect.top + 'px';
-    card.style.left = rect.left + 'px';
-    card.style.width = rect.width + 'px';
-    card.style.height = rect.height + 'px';
-    card.style.margin = '0';
     card.style.zIndex = '9999';
-    card.style.transform = 'none';
+
+    if (window.innerWidth <= 768) {
+        // Mobile: Đặt ngay vào giữa, không cần animation từ vị trí cũ
+        card.style.top = '50%';
+        card.style.left = '50%';
+        // Tính toán scale sao cho vừa khít màn hình
+        // Card gốc 450px. Ví dụ màn hình 375px. Cần margin 20px mỗi bên -> còn 335px.
+        // Scale = 335 / 450 = 0.74
+        const safeWidth = window.innerWidth - 30; // Trừ hao lề
+        const scaleFactor = Math.min(safeWidth / 450, 1);
+        
+        card.style.transform = `translate(-50%, -50%) scale(${scaleFactor})`;
+        card.style.width = '450px'; // Giữ nguyên width gốc để scale cho đẹp
+        card.style.height = '280px';
+        card.style.margin = '0';
+    } else {
+        // Desktop: Animation mượt từ vị trí cũ
+        card.style.top = rect.top + 'px';
+        card.style.left = rect.left + 'px';
+        card.style.width = rect.width + 'px';
+        card.style.height = rect.height + 'px';
+        card.style.margin = '0';
+        
+        // Trigger reflow
+        void card.offsetWidth; 
+
+        card.style.top = '50%';
+        card.style.left = '50%';
+        card.style.transform = 'translate(-50%, -50%) scale(1.05)';
+    }
 
     activeCard = card;
     overlay.classList.add('active');
-
-    void card.offsetWidth; 
-
     card.classList.add('is-focused');
     
-    card.style.top = '50%';
-    card.style.left = '50%';
-    card.style.transform = 'translate(-50%, -50%) scale(1.05)';
-    
-    if (window.innerWidth <= 768) {
-        card.style.transform = 'translate(-50%, -50%) scale(0.9)';
-    }
-
-    // Tự động bật nhạc khi mở thẻ
     startDisk(card);
 }
 
@@ -395,44 +419,36 @@ function startDisk(card) {
         diskTimeout = setTimeout(() => {
             audioPlayer.src = songUrl;
             
-            // --- QUAN TRỌNG: CƠ CHẾ ẨN ĐĨA NẾU KHÔNG CÓ NHẠC ---
             audioPlayer.onerror = function() {
-                console.log("Không tìm thấy file nhạc hoặc lỗi tải: " + songUrl);
-                // Nếu lỗi, ẩn đĩa đi ngay lập tức
+                console.log("Lỗi file nhạc: " + songUrl);
                 diskContainer.style.display = 'none';
             };
 
-            // Nếu tải thành công (hoặc đang thử), hiển thị lại đĩa (phòng trường hợp đã bị ẩn ở lần click trước)
             diskContainer.style.display = 'block';
 
             audioPlayer.play().then(() => {
-                // Nếu play thành công -> Animation
                 diskContainer.classList.remove('state-retracted');
                 diskBody.classList.remove('paused');
                 diskContainer.classList.add('state-playing');
                 diskBody.classList.add('spinning');
                 currentDisk = { container: diskContainer, body: diskBody };
             }).catch(e => {
-                console.log("Cần tương tác người dùng hoặc lỗi file", e);
-                // Nếu lỗi do file không tồn tại (sẽ trigger onerror ở trên), đĩa sẽ ẩn.
+                console.log("Chưa tương tác hoặc lỗi", e);
             });
             
-        }, 800); // Đợi thẻ phóng to xong mới chạy đĩa
+        }, 800);
     }
 }
 
 function toggleDiskState(container, body) {
-    // Kiểm tra trạng thái hiện tại dựa trên class
     const isPlaying = container.classList.contains('state-playing');
 
     if (isPlaying) {
-        // Đang chơi -> Thụt vào (Pause)
         container.classList.remove('state-playing');
         container.classList.add('state-retracted');
         body.classList.add('paused');
         audioPlayer.pause();
     } else {
-        // Đang thụt -> Trồi ra (Play)
         container.classList.remove('state-retracted');
         container.classList.add('state-playing');
         body.classList.remove('paused');
@@ -443,11 +459,9 @@ function toggleDiskState(container, body) {
 function closeCard() {
     if (!activeCard) return;
 
-    // Dừng nhạc và reset đĩa
     if (diskTimeout) clearTimeout(diskTimeout);
     audioPlayer.pause();
     audioPlayer.currentTime = 0; 
-    // Xóa sự kiện error cũ để không ảnh hưởng thẻ sau
     audioPlayer.onerror = null;
 
     const diskContainer = activeCard.querySelector('.disk-container');
@@ -461,7 +475,8 @@ function closeCard() {
 
     activeCard.classList.remove('is-flipped');
 
-    if (placeholder) {
+    // Logic trả thẻ về chỗ cũ
+    if (placeholder && window.innerWidth > 768) {
         const rect = placeholder.getBoundingClientRect();
         const originalWidth = placeholder.offsetWidth;
         const originalHeight = placeholder.offsetHeight;
@@ -471,11 +486,12 @@ function closeCard() {
 
         activeCard.style.top = (rect.top - scaleOffsetY) + 'px';
         activeCard.style.left = (rect.left - scaleOffsetX) + 'px';
-        
         activeCard.style.width = originalWidth + 'px';
         activeCard.style.height = originalHeight + 'px';
-
         activeCard.style.transform = ''; 
+    } else {
+        // Mobile: Chỉ cần reset style, không cần animation bay về (vì placeholder ẩn)
+        activeCard.style.transform = '';
     }
 
     activeCard.classList.remove('is-focused');
@@ -486,7 +502,6 @@ function closeCard() {
 
     setTimeout(() => {
         currentCard.style.transition = 'none';
-        
         currentCard.style.position = '';
         currentCard.style.top = '';
         currentCard.style.left = '';
@@ -498,8 +513,9 @@ function closeCard() {
 
         if (currentPlaceholder && currentPlaceholder.parentNode) {
             currentPlaceholder.parentNode.removeChild(currentPlaceholder);
-            }
+        }
         
+        // Force redraw
         void currentCard.offsetWidth;
         currentCard.style.transition = '';
 
