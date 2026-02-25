@@ -31,7 +31,15 @@
 
     <!-- MAIN PAGE COVER -->
     <div class="cover-container">
-        <img src="image/covers/cover_class.png" alt="Class Cover" class="cover-image" onerror="this.style.backgroundColor='#64748b'">
+        <video 
+          src="image/covers/cover_class.mp4" 
+          class="cover-image" 
+          style="background-color: #64748b;" 
+          autoplay 
+          muted 
+          loop 
+          playsinline>
+        </video>
         <div class="cover-overlay">
             <div class="class-title-block">
                 <h1 class="class-title-main">DANH SÁCH THÀNH VIÊN</h1>
@@ -82,6 +90,8 @@
     </footer>
 
     <!-- LIÊN KẾT FILE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
