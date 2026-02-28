@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thẻ Định Danh Lớp 12A2 - K28 (Music Sleeve Edition)</title>
+    
+    <!-- IMPORT FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lexend:wght@700;900&family=Itim&family=Oswald:wght@700&family=Paytone+One&family=Spectral:wght@800&display=swap" rel="stylesheet">
+
+    <!-- LIÊN KẾT FILE CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========================================== -->
+    <!-- LOADING SCREEN (GLASSMORPHISM) -->
+    <!-- ========================================== -->
+    <div id="loading-screen">
+        <div class="card-container" id="loading-card">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <!-- Tăng height xíu cho cân đối vì không có ảnh -->
+                    <div class="header-image-container" style="height: 100px;">
+                        <img src="image/headers/header_wait.gif" alt="Đang chuẩn bị..." onerror="this.style.backgroundColor='#1e293b';">
+                    </div>
+                    
+                    <div class="loading-card-content">
+                        <h2 class="status-text" id="loading-text">ĐANG CHUẨN BỊ<span class="dots"></span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER SECTION -->
+    <header class="site-header">
+        <a href="#" class="header-logo">
+            <img src="image/logo.png" alt="Logo 12A2" class="header-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='A2<span>K28</span>';">
+        </a>
+        <nav class="main-nav">
+            <a href="#" class="nav-link">Lớp 10</a>
+            <a href="#" class="nav-link">Lớp 11</a>
+            <a href="#" class="nav-link">Lớp 12</a>
+            <a href="https://boulevardphat.github.io/members/" class="nav-link" style="color: var(--primary-color);">Thành Viên</a>
+            <a href="#" class="nav-link">Giáo Viên</a>
+        </nav>
+    </header>
+
+    <!-- MAIN PAGE COVER -->
+    <div class="cover-container">
+        <video 
+          src="image/covers/cover_class.mp4" 
+          class="cover-image" 
+          style="background-color: #64748b;" 
+          autoplay 
+          muted 
+          loop 
+          playsinline>
+        </video>
+        <div class="cover-overlay">
+            <div class="class-title-block">
+                <h1 class="class-title-main">DANH SÁCH THÀNH VIÊN</h1>
+                <div class="class-subtitle">Chuyên Anh 2 - Khóa 28 (2023 - 2026)</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+    <!-- Nơi Javascript sẽ render danh sách thành viên -->
+    <div id="app"></div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>VỀ CHÚNG TÔI</h3>
+                <p class="footer-desc">
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>LIÊN KẾT NHANH</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Lớp 10</a></li>
+                    <li><a href="#">Lớp 11</a></li>
+                    <li><a href="#">Lớp 12</a></li>
+                    <li><a href="#">Thành Viên</a></li>
+                    <li><a href="#">Giáo Viên</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>LIÊN HỆ</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Facebook: 12A2 - K28</a></li>
+                </ul>
+                <div style="margin-top: 15px;">
+                    <h4 style="color: white; margin: 0 0 5px 0; font-size: 14px; font-weight: 600;">Góp ý cho lớp:</h4>
+                    <textarea class="feedback-box" rows="3" placeholder="Nhập lời nhắn..."></textarea>
+                    <button class="feedback-btn">Gửi</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 - 2026 12A2 K28. All rights reserved. Made with love.
+        </div>
+    </footer>
+
+    <!-- LIÊN KẾT FILE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
