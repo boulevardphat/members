@@ -862,3 +862,41 @@ body {
 a, button, .nav-link, .card-container, .disk-body, .feedback-btn {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>👆</text></svg>") 16 0, pointer !important;
 }
+/* ==========================================
+   --- CUSTOM TEXT DƯỚI TỰA ĐỀ TỪNG TỔ --- 
+   ========================================== */
+
+/* Ép margin của tựa đề nhỏ lại để nhường chỗ cho dòng text */
+.group-title-text {
+    margin-bottom: 10px !important; 
+}
+
+/* Kiểu dáng cho dòng text tự nhập */
+.group-subtitle-text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 40px; /* Bù lại khoảng trống cho phần bên dưới */
+    font-family: 'Be Vietnam Pro', sans-serif;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
+/* Màu sắc dòng text trùng với tone màu (theme) của từng tổ */
+.subtitle-theme-1 { color: #db2777; }
+.subtitle-theme-2 { color: #059669; }
+.subtitle-theme-3 { color: #d97706; }
+.subtitle-theme-4 { color: #475569; }
+
+/* Thu nhỏ font chữ và khoảng cách trên giao diện điện thoại */
+@media (max-width: 768px) {
+    .group-title-text { margin-bottom: 5px !important; }
+    .group-subtitle-text { 
+        font-size: 1rem; 
+        margin-bottom: 30px; 
+    }
+}

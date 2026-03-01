@@ -6,7 +6,12 @@ const GROUP_HEADERS = {
     3: "image/headers/header_to_3.jpg", 
     4: "image/headers/header_to_4.jpg"  
 };
-
+const GROUP_SUBTITLES = {
+    1: "Khởi đầu của cả tập thể, dẫn dắt mọi người đến thành công",
+    2: "Năng động và đầy sức trẻ",
+    3: "Dịu dàng, ôn hòa, đem lại sự yên bình cho lớp",
+    4: "Nơi bản sắc cá nhân và cái tôi nghệ thuật được tôn vinh"
+};
 // --- GLOBAL AUDIO PLAYER ---
 const audioPlayer = new Audio();
 audioPlayer.loop = true; 
@@ -114,11 +119,11 @@ const membersData =[
     // --- TỔ 4 ---
     { group: 4, name: "Nguyễn Quỳnh Lam", role: "Tổ trưởng", img: "image/avatars/NQL.jpg",
       dob: "06/07/2008", keywords:["Vui vẻ", "không gay", "mong manh"],
-      bio: "Là 1 người iu hoà bình, ghét chiến tranh, thích động vật và (hơi) không ưa loài người. Hơi lắm mồm, thích dốc dơ+mất dậy, sẽ thành emo gỉl trong một vài trường hợp. Tự tin khẳng định mình là người hèn số 1 VN, chuyên gia gáy to gáy bẩn nma đụng chuyện thì im gu 💔. Nhìn tưng tưng zị thui chứ là một người khá dễ tổn thưn ehe. 👉👈💦." },
+      bio: "LXin chào, mình là Quỳnh Lam của tập thể lớp A2k28. Hiện tại mình 17 tuổi. Mình là 1 người iu hoà bình, ghét chiến tranh, thích động vật và (hơi) không ưa loài người. Mình còn hơi lắm mồm, thích dốc dơ+mất dậy, sẽ thành emo gỉl trong một vài trường hợp. Tự tin khẳng định mình là người hèn số 1 VN, chuyên gia gáy to gáy bẩn nma đụng chuyện thì im gu 💔. Nhìn mình tưng tưng zị thui chứ là một người khá dễ tổn thưn ehe. 👉👈💦<br><br>Thật lòng mà nói, mình thấy bản thân mình năm 17 tuổi vẫn còn nhiều điều phải học hỏi, chủ yếu là bởi vì mình thực sự chưa hoàn hảo theo cách mà mình muốn. Tuy nhiên, để được làm chính mình năm 17 tuổi, mình đã phải bước đi trên một hành trình siêuu dàaii, đó chính là hành trình trưởng thành. Có lúc mình đã nghĩ đến chuyện buông xuôi mặc sự đời, nhưng mình đã chọn không ngừng cố gắng, và nhờ đó mình đã gặp được những người bạn đồng hành tuyệt cà là vời, mình đã gặp được A2K28.<br><br>Mình, Quỳnh Lam của năm 18 tuổi, thật sự cảm ơn tất cả mọi người vì đã là một phần trong hành trình trưởng thành của mình. Cảm ơn mọi người vì đã giúp mình nuôi dưỡng và yêu thương đứa trẻ bên trong mình. (Thịt nó ngon lắm 😁😋 yummy)<br><br>Cảm ơn mọi người vì đã giúp những bông hoa nở rộ trong các phần buồn nhất của lòng mình.<br><br>Cảm ơn mọi người vì đã là những người bạn đồng hành tuyệt vời. Mình thật sự rất biết ơn vì nhờ A2K28, mình mới có thể là chính mình ngày hôm nay.<br><br>Và cuối cùng, cảm ơn mọi người vì đã cho mình những kỉ niệm không thể nào quên. 🌺💐♥️" },
     
     { group: 4, name: "Trần Hoàng Anh Thư", role: "Sao đỏ", img: "image/avatars/THAT.jpg",
       dob: "03/01/2008", keywords:["Năng động", "Hoạt bát", "Vui vẻ"],
-      bio: "Mình là một người trẻ luôn tò mò và thích tìm hiểu nhiều lĩnh vực khác nhau, từ học tập, ngôn ngữ đến những vấn đề xoay quanh đạo đức và mối quan hệ giữa người với người. Mình đang ở giai đoạn quan trọng của tuổi học trò, vừa học vừa lo cho tương lai nên thường đặt ra nhiều câu hỏi để hiểu rõ hơn về thế giới xung quanh. Mình không ngại bắt đầu từ những điều nhỏ, vì tin rằng kiến thức và kinh nghiệm đều tích lũy từng chút một. Dù đôi lúc còn băn khoăn, mình luôn cố gắng chủ động học hỏi, cải thiện bản thân và hướng tới những mục tiêu dài hạn một cách nghiêm túc." },
+      bio: "Không biết phải nói sao nma tui siêu thích với siêu cảm ơn 12A2 vl. Nhiều khi thấy mình may mắn ghê tại cả cấp 2 lẫn cấp 3 đều vào được mấy cái lớp dthh vảiii. 12A2 cho tui trải nghiệm xàm vl nhưng mà tui trân trọng từng khoảnh khắc đó. Chắc là lúc trẻ tiếp xúc với nhiều người tốt quá nên tui sợ mốt lớn khó tính trong việc chọn bạn luôn á. Tại 12A2 thì rất là lớp ấy rồi.<br><br>Thiệt ra cái bài tui ghim trong này hông phải là bài mà tui thích nhất nhưng là bài mà tui muốn nói với lớp nhất. Nếu được thì tui muốn học với lớp thêm tầm 5-10 năm nữa luôn á. Hong ngờ sắp phải chia tay rồi 💔😭. Lời tui muốn nói còn nhìuu lắm nhưng mà chắc đành để dành đến kỷ yếu z. Tui iu mng nhìu dữ luông áaa." },
     
     { group: 4, name: "Nguyễn Vũ Đức", role: "", img: "image/avatars/NVĐ.jpg",
       dob: "02/07/2008", keywords:["vui vẻ", "nhân văn", "trung lập"],
@@ -193,7 +198,14 @@ function renderCards() {
         title.innerHTML = `TỔ <span class="group-num">${groupNum}</span>`;
         
         contentContainer.appendChild(title);
-        
+        // --- THÊM ĐOẠN CODE NÀY ĐỂ HIỂN THỊ TEXT ---
+        if (GROUP_SUBTITLES[groupNum]) {
+            const subtitle = document.createElement('p');
+            subtitle.className = `group-subtitle-text subtitle-theme-${groupNum}`;
+            subtitle.innerHTML = GROUP_SUBTITLES[groupNum];
+            contentContainer.appendChild(subtitle);
+        }
+        // --- KẾT THÚC ĐOẠN THÊM MỚI ---
         const wrapper = document.createElement('div');
         wrapper.className = 'cards-wrapper';
         
