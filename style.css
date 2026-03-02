@@ -1063,3 +1063,140 @@ a, button, .nav-link, .card-container, .disk-body, .feedback-btn {
         font-size: 3.5rem; /* Thu nhỏ % trên điện thoại */
     }
 }
+/* ==========================================
+   --- BOTTOM NAVIGATION BAR (XUÂN HẠ THU ĐÔNG) --- 
+   ========================================== */
+.bottom-nav-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8000;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.bottom-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 44px;
+    border-radius: 44px;
+    padding: 0 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #1e293b;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: transparent;
+    overflow: hidden;
+    max-width: 44px; /* Mặc định ẩn chữ, chỉ hiện icon */
+    box-sizing: border-box;
+}
+
+.bottom-nav-item:hover, .bottom-nav-item.active {
+    background: rgba(255, 255, 255, 0.9);
+    max-width: 140px; /* Giãn ngang khi hover */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+}
+
+.nav-text {
+    white-space: nowrap;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-block;
+    margin-left: 0;
+}
+
+.bottom-nav-item:hover .nav-text, .bottom-nav-item.active .nav-text {
+    opacity: 1;
+    transform: translateX(0);
+    margin-left: 8px; /* Đẩy chữ ra xa icon một chút */
+}
+
+/* HIỆU ỨNG TỰ ĐỘNG ĐẢO MÀU SÁNG TỐI THEO NỀN (DARK MODE BEHAVIOR) */
+.bottom-nav-container.nav-dark-mode {
+    background: rgba(30, 41, 59, 0.65); /* Nền kính đen */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.bottom-nav-container.nav-dark-mode .bottom-nav-item {
+    color: #f8fafc; /* Đổi icon và chữ thành màu trắng */
+}
+.bottom-nav-container.nav-dark-mode .bottom-nav-item:hover,
+.bottom-nav-container.nav-dark-mode .bottom-nav-item.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Responsive trên điện thoại */
+@media (max-width: 768px) {
+    .bottom-nav-container {
+        bottom: 20px;
+        padding: 6px;
+        gap: 6px;
+    }
+    .bottom-nav-item {
+        height: 40px;
+        max-width: 40px;
+        padding: 0 10px;
+    }
+    .bottom-nav-item:hover, .bottom-nav-item.active {
+        max-width: 120px;
+    }
+    .nav-icon svg { width: 18px; height: 18px; }
+    .nav-text { font-size: 13px; }
+}
+/* ==========================================
+   --- CẬP NHẬT GIAO DIỆN GLASSMORPHISM VÀ ẨN HIỆN --- 
+   ========================================== */
+
+/* Trạng thái ẩn của thanh 4 mùa (Rơi xuống và mờ đi) */
+.bottom-nav-container.nav-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 40px);
+}
+
+/* Biến 2 nút Nhạc thành Glassmorphism (Gương mờ) giống y hệt thanh 4 mùa */
+.audio-prompt, .bg-music-toggle {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    color: #1e293b !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Khi lướt lên phần Cover đen mờ hoặc xuống Footer đen, tất cả đồng loạt đổi qua Gương Đen */
+.audio-prompt.nav-dark-mode, .bg-music-toggle.nav-dark-mode {
+    background: rgba(30, 41, 59, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #f8fafc !important; /* Đổi màu chữ và Icon SVG thành trắng */
+}
+
+/* Viết đè Transition để màu kính/icon đổi mượt mà mà không ảnh hưởng hiệu ứng sẵn có */
+.bg-music-toggle {
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease, color 0.4s ease, border 0.4s ease !important;
+}
+.audio-prompt {
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.4s ease, color 0.4s ease, border 0.4s ease !important;
+}

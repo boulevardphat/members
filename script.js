@@ -127,7 +127,7 @@ function switchGroupMusic(groupNum) {
 let hasUserInteracted = false;
 const audioPrompt = document.createElement('div');
 audioPrompt.className = 'audio-prompt';
-audioPrompt.innerHTML = '<span>🎵</span> Chạm để bật nhạc nền nhé!';
+audioPrompt.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg> <span style="white-space:nowrap;">Chạm để bật nhạc nền nhé!</span>`;
 document.body.appendChild(audioPrompt);
 
 function hideAudioPrompt() {
@@ -254,6 +254,8 @@ function renderCards() {
         const groupMembers = membersData.filter(m => m.group === groupNum);
         const section = document.createElement('div');
         section.className = `group-section group-theme-${groupNum} ${seasonClasses[groupNum]}`;
+        section.id = `group-${groupNum}`; // <-- Thêm dòng này để tạo ID gắn link
+
         
         const contentContainer = document.createElement('div');
         contentContainer.className = 'group-content-container';
@@ -617,3 +619,141 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 400);
     }
 });
+// ==========================================
+// --- BOTTOM NAVIGATION BAR (XUÂN HẠ THU ĐÔNG) ---
+// ==========================================
+
+// Biểu tượng SVG đại diện 4 mùa
+const NAV_ICONS = {
+    1: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V22"/><path d="M7.5 12a4.5 4.5 0 1 1 4.5 4.5"/><path d="M16.5 12a4.5 4.5 0 1 0-4.5 4.5"/><circle cx="12" cy="12" r="3"/></svg>`, // Xuân (Hoa)
+    2: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`, // Hạ (Mặt trời)
+    3: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 22c1.25-.97 2.5-2 3.8-3.35L8 16"/></svg>`, // Thu (Lá rụng)
+    4: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg>` // Đông (Bông tuyết)
+};
+
+const GROUPS_NAMES = {
+    1: "Tổ 1 (Xuân)",
+    2: "Tổ 2 (Hạ)",
+    3: "Tổ 3 (Thu)",
+    4: "Tổ 4 (Đông)"
+};
+
+function createBottomNav() {
+    const navContainer = document.createElement('div');
+    navContainer.className = 'bottom-nav-container';[1, 2, 3, 4].forEach(groupNum => {
+        const item = document.createElement('a');
+        item.className = 'bottom-nav-item';
+        item.href = `#group-${groupNum}`;
+        item.innerHTML = `
+            <span class="nav-icon">${NAV_ICONS[groupNum]}</span>
+            <span class="nav-text">${GROUPS_NAMES[groupNum]}</span>
+        `;
+        
+        // Cuộn mượt (Smooth Scroll) khi nhấn, tự động trừ hao phần header ở trên để không bị che
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = document.getElementById(`group-${groupNum}`);
+            if (section) {
+                const y = section.getBoundingClientRect().top + window.pageYOffset - 90;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        });
+
+        navContainer.appendChild(item);
+    });
+
+    document.body.appendChild(navContainer);
+}
+
+// Chạy khởi tạo Nav khi web load xong
+document.addEventListener("DOMContentLoaded", () => {
+    createBottomNav();
+    
+    let isNavScrolling = false;
+    window.addEventListener('scroll', () => {
+        if (!isNavScrolling) {
+            window.requestAnimationFrame(() => {
+                updateBottomNav();
+                isNavScrolling = false;
+            });
+            isNavScrolling = true;
+        }
+    });
+    
+    setTimeout(updateBottomNav, 500); // Check màu ngay khi load trang
+});
+
+// Hàm kiểm tra và đổi màu Sáng/Tối cho một phần tử trôi nổi bất kỳ
+function checkDarkModeForElement(el) {
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const centerY = rect.top + rect.height / 2;
+    let isDark = false;
+    document.querySelectorAll('.site-footer, .cover-container').forEach(darkEl => {
+        const darkRect = darkEl.getBoundingClientRect();
+        if (darkRect.top <= centerY && darkRect.bottom >= centerY) {
+            isDark = true;
+        }
+    });
+
+    if (isDark) {
+        el.classList.add('nav-dark-mode');
+    } else {
+        el.classList.remove('nav-dark-mode');
+    }
+}
+
+function updateBottomNav() {
+    const nav = document.querySelector('.bottom-nav-container');
+    const prompt = document.querySelector('.audio-prompt');
+    const toggle = document.querySelector('.bg-music-toggle');
+    
+    // 1. Áp dụng thuật toán Glassmorphism đổi màu cho cả 3 nút/thanh
+    checkDarkModeForElement(nav);
+    checkDarkModeForElement(prompt);
+    checkDarkModeForElement(toggle);
+
+    if (!nav) return;
+
+    // 2. CHỈ HIỆN THANH 4 MÙA KHI LƯỚT VÀO KHU VỰC CÁC TỔ
+    const navRect = nav.getBoundingClientRect();
+    const navCenterY = navRect.top + navRect.height / 2;
+    let isOverGroup = false;
+    document.querySelectorAll('.group-section').forEach(group => {
+        const rect = group.getBoundingClientRect();
+        // Kiểm tra xem vị trí thanh có nằm lọt thỏm trong thẻ tổ nào không
+        if (rect.top <= navCenterY && rect.bottom >= navCenterY) {
+            isOverGroup = true;
+        }
+    });
+    // --- ĐOẠN CODE THÊM MỚI ---
+    // Khắc phục độ trễ của GSAP: Bắt buộc ẩn khi kéo lên khu vực Cover (sát đỉnh trang)
+    if (window.scrollY < 150) { 
+        isOverGroup = false;
+    }
+
+    // Ẩn/Hiện thanh (thông qua class CSS .nav-hidden)
+    if (isOverGroup) {
+        nav.classList.remove('nav-hidden');
+    } else {
+        nav.classList.add('nav-hidden');
+    }
+
+    // 3. TỰ ĐỘNG BUNG RỘNG MỤC ĐANG XEM
+    const groups = document.querySelectorAll('.group-section');
+    let activeGroup = null;
+    groups.forEach(group => {
+        const rect = group.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.3) {
+            activeGroup = group.getAttribute('data-group');
+        }
+    });
+
+    document.querySelectorAll('.bottom-nav-item').forEach(item => {
+        if (item.getAttribute('href') === `#group-${activeGroup}`) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
