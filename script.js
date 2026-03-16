@@ -209,7 +209,7 @@ const membersData =[
     { group: 4, name: "Cù Hoàn Mỹ", role: "", img: "image/avatars/CHM.jpg", dob: "06/06/2008", keywords:["Lúc này lúc kia", "nghiêm túc", "hề hước"], bio: "Ba năm cấp ba của tớ đóng gói rất nhiều kỉ niệm đáng nhớ, thực sự là không thể nào quên luôn. Đây cũng là khoảng thời gian giúp tớ trưởng thành hơn nhờ những trải nghiệm đắt giá có 1 0 2 với những người bạn xuất sắc, có chung đam mê, chung chí hướng. Hơn nữa, những người anh, người chị nhiệt huyết cùng những người lái đò tận tâm với nghề ở ngôi trường này đã cầm đuốc dẫn đường không chỉ tớ mà rất nhiều thế hệ trẻ ở đây, giúp tớ học được rất nhiều thứ bổ ích, vạch rõ hơn con đường tương lai sau này." },
     { group: 4, name: "Nguyễn Thanh Thảo", role: "", img: "image/avatars/NTT.jpg", dob: "28/01/2008", keywords:["anti-social", "anti-capitalism", "FREE PALESTINE 🇵🇸🍉"], bio: "Mình vẽ gay" },
     { group: 4, name: "Đặng An Ninh", role: "", img: "image/avatars/ĐAN.jpg", dob: "14/07/2008", keywords:["Vui vẻ", "Hòa đồng", "Tốt bụng"], bio: "Khi nhìn lại ba năm học cấp ba, mình nhận ra điều quý giá nhất chính là những người bạn ngồi cạnh mình. Mình từng là một người khá trầm tính nếu hong phải quá thân, nhưng mỗi lần được bạn bè rủ rê đi ăn, tham gia các hoạt động nhóm hay cả những lúc giải lao tám chuyện, mình cảm thấy bản thân cởi mở và trưởng thành hơn. Ước mơ của mình là sẽ luôn giữ được những tình bạn đẹp này. Chính những kỉ niệm giản dị ấy đã giúp mình hiểu rằng, sự kết nối và chia sẻ là một phần quan trọng để hoàn thiện bản thân. Mình mong rằng dù mai này mỗi đứa một nơi, chúng ta vẫn sẽ luôn trò chuyện và là hậu phương của nhau nhíee." },
-    { group: 4, name: "Nguyễn Thuận Phát", role: "", img: "image/avatars/NTP.jpg", dob: "26/09/2008", keywords:["ʇɐɹq", "𝙰𝚛𝚝𝚒𝚜𝚝𝚒𝚌", "Sống thật ý nghĩa"], bio: "Mình được nhào nặn từ cái nắng mùa hạ, từ cái lạnh mùa đông, từ âm thanh, xúc cảm và dòng chảy ấm nóng của sự sống. Theo quy luật, một năm bắt đầu từ mùa xuân; nhưng với mình, một vòng lặp thực sự khởi đầu từ mùa hạ, thăng hoa vào mùa đông, rồi lại lụi tàn khi mùa hè kế tiếp chạm ngõ.<br><br>Mình yêu cái đẹp, sự sáng tạo và những nguồn cảm hứng bất tận. Trong thế giới nghệ thuật ấy, có hai bản ngã tách biệt hoàn toàn: một bên là sự nhạy cảm, thô ráp, đầy rẫy nỗi đau của mùa đông; bên còn lại là tiếng synth, tiếng bass dồn dập của mùa hè. Với mình, nghệ sĩ không chỉ cho đi âm thanh hay hình ảnh, mà họ trao đi cách họ thấu thị nhân sinh- những góc khuất có thể là điểm chạm giữa người nghệ sĩ và người nghe, giữa những tâm hồn đồng điệu với nhau.<br><br>Âm nhạc là không gian mà sự thô tục cũng có thể là nghệ thuật; nơi tình dục, giới với giới, tôn giáo, sắc tộc hay thậm chí là bạo lực đều được giải phóng. Thử hỏi, có điều gì mà ta không thể bộc bạch thông qua âm nhạc? Nhưng âm nhạc không phải là điểm dừng chân duy nhất, mình còn thiết kế, viết văn và làm thơ. Nghệ sĩ dùng âm nhạc để nói lên tiếng lòng của họ; còn với mình, âm nhạc là không gian để chiêm nghiệm những thông điệp ấy. Nếu âm nhạc là nơi mình 'thu nhận' và SUY NGHĨ, văn chương mới là lúc mình thực sự NÓI RA, gửi gắm vào đó những câu chuyện niên thiếu, những nhịp đập của tình yêu đầu đời và cả những niềm kiêu hãnh cá nhân.<br><br>Từ thế giới nghệ thuật, mình soi chiếu vào bản thân và nhìn ra xã hội, để rồi hình thành hai thực tại song song: Thế giới nội tâm và Thế giới nhân văn. Mình vốn là kẻ bay bổng, suy nghĩ bằng cảm xúc chứ không phải những hệ số nhị phân 0 và 1 khô khan. Mình luôn tự đặt ra những câu hỏi trời ơi đất hỡi, mình không tìm cách chứng minh một công thức, mình tìm cách để hiểu nguyên nhân của các vấn đề hiện hữu trong xã hội. Mình thích thông qua chính những câu hỏi đó để lắng nghe quan điểm của mọi người xung quanh, mỗi người một quan điểm khác nhau giúp mình có câu trả lời khách quan hơn cho mỗi câu hỏi.<br><br>Có chút ích kỷ khi mình nhận ra những vấn đề đó sẽ tác động trực tiếp đến mình; nhưng nếu gạt bỏ cái tôi ấy, mình vẫn không đành lòng nhìn thấy những phận đời khốn khổ (khá khác biệt với tư duy 'tư bản' thuần túy ha?). Mình học cách quan sát và trân trọng sự đa dạng. Có những thứ nhìn vậy mà không phải vậy; chính sự khác biệt tạo nên tính độc bản, và mình muốn bảo vệ điều đó.<br><br>Có cả một mùa hạ và một mùa đông trong tính cách của mình. Mình dễ nói, dễ nghe, dễ chiều, nhưng cũng khó nghe, khó hiểu, khó chiều. Mình thích sự hoài niệm của quá khứ, thích nhớ về những lúc bản thân còn vô tư, nhớ những trang sách mùi mực, nhớ những chuyến đi phố xá mới lạ, yêu những người bạn cùng lớn, yêu từng động tác mà mình từng thuần thục trước kia; chúng gắn với thân xác của mình, là một phần trong chất lỏng của sự sống. Nó đã từng khiến mình trở thành một con người tiêu cực, phải rất chật vật để vượt qua, mình đã nhận ra một điều: Chính hiện tại là quá khứ của tương lai, nếu mình không sống hết mình, mình sẽ lại 'chết' thêm một lần nữa. Lúc nắng lên là mùa hè của mình, mình hoạt ngôn, thích chia sẻ, thích bày trò; nhưng khi nắng xuống; lòng mình lại lạnh lẽo, lấp đầy bởi những nỗi buồn, nỗi lo lắng khó tan. Mình là vậy đó, luôn có cả mùa hạ và mùa đông, luôn thấy mùa hạ và mùa đông, nhưng mình không còn tự chối bỏ điều đó, mình yêu sự khó hiểu của bản thân, bản ngã của mình nằm trong cả hai mùa đó, mất một mùa là mình chết một nửa.<br><br>Mình từng muốn làm phi công để bay cao, bay xa, nhưng giờ đây mình không còn muốn tự trói buộc vào một 'nghề nghiệp ước mơ' cụ thể nào cả. Mình đề cao sự phù hợp vì chỉ khi bắt đầu từ sự phù hợp, ta mới chạm tới được đam mê thực thụ. Mình muốn sống một cuộc đời thật ý nghĩa, thật 'nghệ'. Mình muốn trở thành một tia sáng - không cần phải là ai khác, chính mình là tia sáng tự soi rọi cho bản thân và cho những người mình yêu thương." },
+    { group: 4, name: "Nguyễn Thuận Phát", role: "", img: "image/avatars/NTP.jpg", dob: "26/09/2008", keywords:["ʇɐɹq", "𝙰𝚛𝚝𝚒𝚜𝚝𝚒𝚌", "Sống thật ý nghĩa"], bio: "Mình được nhào nặn từ cái nắng mùa hạ, từ cái lạnh mùa đông, từ âm thanh, xúc cảm và dòng chảy ấm nóng của sự sống. Theo quy luật, một năm bắt đầu từ mùa xuân; nhưng với mình, một vòng lặp thực sự khởi đầu từ mùa hạ, thăng hoa vào mùa đông, rồi lại lụi tàn khi mùa hè kế tiếp chạm ngõ.<br><br>Mình yêu cái đẹp, sự sáng tạo và những nguồn cảm hứng bất tận. Trong thế giới nghệ thuật ấy, có hai bản ngã tách biệt hoàn toàn: một bên là sự nhạy cảm, thô ráp, đầy rẫy nỗi đau của mùa đông; bên còn lại là tiếng synth, tiếng bass dồn dập của mùa hè. Với mình, nghệ sĩ không chỉ cho đi âm thanh hay hình ảnh, mà họ trao đi cách họ thấu thị nhân sinh- những góc khuất có thể là điểm chạm giữa người nghệ sĩ và người nghe, giữa những tâm hồn đồng điệu với nhau.<br><br>Âm nhạc là không gian mà sự thô tục cũng có thể là nghệ thuật; nơi tình dục, giới với giới, tôn giáo, sắc tộc hay thậm chí là bạo lực đều được giải phóng. Thử hỏi, có điều gì mà ta không thể bộc bạch thông qua âm nhạc? Nhưng âm nhạc không phải là điểm dừng chân duy nhất, mình còn thiết kế, viết văn và làm thơ. Nghệ sĩ dùng âm nhạc để nói lên tiếng lòng của họ; còn với mình, âm nhạc là không gian để chiêm nghiệm những thông điệp ấy. Nếu âm nhạc là nơi mình 'thu nhận' và SUY NGHĨ, văn chương mới là lúc mình thực sự NÓI RA, gửi gắm vào đó những câu chuyện niên thiếu, những nhịp đập của tình yêu đầu đời và cả những niềm kiêu hãnh cá nhân.<br><br>Từ thế giới nghệ thuật, mình soi chiếu vào bản thân và nhìn ra xã hội, để rồi hình thành hai thực tại song song: Thế giới nội tâm và Thế giới nhân văn. Mình vốn là kẻ bay bổng, suy nghĩ bằng cảm xúc chứ không phải những hệ số nhị phân 0 và 1 khô khan. Mình luôn tự đặt ra những câu hỏi trời ơi đất hỡi, mình không tìm cách chứng minh một công thức, mình tìm cách để hiểu nguyên nhân của các vấn đề hiện hữu trong xã hội. Mình thích thông qua chính những câu hỏi đó để lắng nghe quan điểm của mọi người xung quanh, mỗi người một quan điểm khác nhau giúp mình có câu trả lời khách quan hơn cho mỗi câu hỏi.<br><br>Có chút ích kỷ khi mình nhận ra những vấn đề đó sẽ tác động trực tiếp đến mình; nhưng nếu gạt bỏ cái tôi ấy, mình vẫn không đành lòng nhìn thấy những phận đời khốn khổ (khá khác biệt với tư duy 'tư bản' thuần túy ha?). Mình học cách quan sát và trân trọng sự đa dạng. Có những thứ nhìn vậy mà không phải vậy; chính sự khác biệt tạo nên tính độc bản, và mình muốn bảo vệ điều đó.<br><br>Có cả một mùa hạ và một mùa đông trong tính cách của mình. Mình dễ nói, dễ nghe, dễ chiều, nhưng cũng khó nghe, khó hiểu, khó chiều. Mình thích sự hoài niệm của quá khứ, thích nhớ về những lúc bản thân còn vô tư, nhớ những trang sách mùi mực, nhớ những chuyến đi phố xá mới lạ, yêu những người bạn cùng lớn, yêu từng động tác mà mình từng thuần thục trước kia; chúng gắn với thân xác của mình, là một phần trong chất lỏng của sự sống. Nó đã từng khiến mình trở thành một con người tiêu cực, phải rất chật vật để vượt qua, mình đã nhận ra một điều: Chính hiện tại là quá khứ của tương lai, nếu mình không sống hết mình, mình sẽ lại 'chết' thêm một lần nữa. Lúc nắng lên là mùa hè của mình, mình hoạt ngôn, thích chia sẻ, thích bày trò; nhưng khi nắng xuống; lòng mình lại lạnh lẽo, lấp đầy bởi những nỗi buồn, nỗi lo lắng khó tan. Mình là vậy đó, luôn có cả mùa hạ và một mùa đông, luôn thấy mùa hạ và mùa đông, nhưng mình không còn tự chối bỏ điều đó, mình yêu sự khó hiểu của bản thân, bản ngã của mình nằm trong cả hai mùa đó, mất một mùa là mình chết một nửa.<br><br>Mình từng muốn làm phi công để bay cao, bay xa, nhưng giờ đây mình không còn muốn tự trói buộc vào một 'nghề nghiệp ước mơ' cụ thể nào cả. Mình đề cao sự phù hợp vì chỉ khi bắt đầu từ sự phù hợp, ta mới chạm tới được đam mê thực thụ. Mình muốn sống một cuộc đời thật ý nghĩa, thật 'nghệ'. Mình muốn trở thành một tia sáng - không cần phải là ai khác, chính mình là tia sáng tự soi rọi cho bản thân và cho những người mình yêu thương." },
     { group: 4, name: "Nguyễn Như Tâm", role: "", img: "image/avatars/NNT.jpg", dob: "05/02/2008", keywords:["Chaebol", "chấm", "chị bảy gà"], bio: "Trước đây, mình là người đặt nặng điểm số, luôn thất vọng khi không đạt được mục tiêu đề ra, khiến mình nghĩ rằng cuộc sống học đường cấp ba rất căng thẳng và mệt mỏi. Tuy nhiên, hơn hai năm gắn bó với các bạn lớp A2 K28 đã giúp mình thay đổi. Mình trở nên lạc quan hơn và cảm nhận được niềm vui khi đến trường (cụ thể là không có ngày nào mình nhịn cười được trước những hành động vô tri và dí dỏm của các bạn). Nếu trước kia chỉ một điểm số thấp cũng đủ làm mình buồn cả ngày, thì giờ đây mình có thể mỉm cười trước những thất bại cùng bạn bè (Giả sử như được 0 điểm toán từ thấy Quốc Anh mà tụi mình vẫn hí ha hí hửng chụp locket). Chính các bạn đã giúp mình học cách lạc quan, giữ tinh thần vui vẻ để tiếp tục cố gắng." }
 ];
 
@@ -243,8 +243,28 @@ const seasonClasses = {
     1: "season-spring", 2: "season-summer", 3: "season-autumn", 4: "season-winter"
 };
 
+// ==========================================
+// --- SCROLL & KIỂM TRA MÀN HÌNH (MOBILE / PC) ---
+// ==========================================
+
+// 1. Cài đặt hiệu ứng Scroll cho Card
+const observerOptions = { threshold: 0.01 };
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.remove('scroll-hidden');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// 2. State kiểm tra thiết bị (Điện thoại <= 768px)
+let isMobileView = window.innerWidth <= 768;
+
 function renderCards() {
     const app = document.getElementById('app');
+    app.innerHTML = ''; // Làm sạch UI cũ để vẽ lại mới nếu có thay đổi
+    
     const groups =[1, 2, 3, 4];
     
     groups.forEach(groupNum => {
@@ -284,6 +304,9 @@ function renderCards() {
         
         app.appendChild(section);
     });
+
+    // Quan sát lại các mục cho scroll animation
+    document.querySelectorAll('.card-container').forEach(card => observer.observe(card));
 }
 
 function createCard(data, index) {
@@ -292,14 +315,15 @@ function createCard(data, index) {
 
     const zodiacFile = getZodiacImage(data.dob);
     const zodiacImgTag = zodiacFile ? `<img src="image/${zodiacFile}" class="zodiac-bg" alt="Zodiac">` : '';
+    
     const headerSrc = GROUP_HEADERS[data.group] || "image/headers/header_template.jpg";
-
     const imgFileName = data.img.split('/').pop().replace(/\.[^/.]+$/, "");
     const musicSrc = `music/${imgFileName}.mp3`;
     const avatarFileName = data.img.split('/').pop();
     const labelStyle = `background-image: url('image/musiccover/${avatarFileName}');`;
     
-    const musicDiskHTML = `
+    // --- NẾU LÀ MOBILE, BỎ RENDERING ĐĨA NHẠC VÀ HEADER ---
+    const musicDiskHTML = isMobileView ? '' : `
         <div class="disk-container" data-song="${musicSrc}">
             <div class="disk-body">
                 <div class="disk-label" style="${labelStyle}"></div>
@@ -308,14 +332,18 @@ function createCard(data, index) {
         </div>
     `;
 
+    const headerImageHTML = isMobileView ? '' : `
+        <div class="header-image-container">
+            <img src="${headerSrc}" alt="Header Image" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#334155';">
+        </div>
+    `;
+
     container.innerHTML = `
         <div class="card-inner">
             ${musicDiskHTML}
             <div class="card-face card-front">
                 ${zodiacImgTag}
-                <div class="header-image-container">
-                    <img src="${headerSrc}" alt="Header Image" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#334155';">
-                </div>
+                ${headerImageHTML}
                 <div class="card-content">
                     <div class="photo-area">
                         <img src="${data.img}" alt="${data.name}" onerror="this.src='https://placehold.co/105x140?text=No+Image';">
@@ -359,6 +387,7 @@ function createCard(data, index) {
     const diskContainer = container.querySelector('.disk-container');
     const diskBody = container.querySelector('.disk-body');
     
+    // Chỉ thêm sự kiện phát nhạc cá nhân nếu thẻ trên PC (Có đĩa nhạc)
     if (diskBody) {
         diskBody.addEventListener('click', (e) => {
             e.stopPropagation(); 
@@ -367,6 +396,24 @@ function createCard(data, index) {
     }
     return container;
 }
+
+// 3. Lắng nghe thay đổi kích thước, nếu xoay/đổi giữa PC-Mobile thì Render lại
+window.addEventListener('resize', () => {
+    const currentIsMobile = window.innerWidth <= 768;
+    
+    // Chỉ render lại nếu có sự chuyển đổi giữa PC và Mobile
+    if (currentIsMobile !== isMobileView) {
+        isMobileView = currentIsMobile;
+        
+        if (activeCard) closeCard(); // Đóng thẻ hiện tại tránh lỗi layout
+        
+        groupMusicObserver.disconnect();
+        observer.disconnect();
+        
+        renderCards();
+    }
+});
+
 
 // ==========================================
 // --- INTERACTION LOGIC ---
@@ -423,7 +470,9 @@ function handleCardClick(card) {
 function startDisk(card) {
     const diskContainer = card.querySelector('.disk-container');
     const diskBody = card.querySelector('.disk-body');
-    if (!diskContainer) return;
+    // Nếu ở mobile không có diskContainer, bỏ qua logic nhạc thành viên
+    if (!diskContainer) return; 
+    
     const songUrl = diskContainer.getAttribute('data-song');
     if (diskTimeout) clearTimeout(diskTimeout);
 
@@ -447,6 +496,7 @@ function startDisk(card) {
 }
 
 function toggleDiskState(container, body) {
+    if (!container || !body) return;
     const isPlaying = container.classList.contains('state-playing');
     if (isPlaying) {
         container.classList.remove('state-playing');
@@ -529,22 +579,12 @@ document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeCard();
 });
 
+// Chạy lần đầu tiên
 renderCards();
 
 // ==========================================
-// --- SCROLL & GSAP ANIMATION ---
+// --- GSAP ANIMATION CỦA TRANG ---
 // ==========================================
-const observerOptions = { threshold: 0.01 };
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.remove('scroll-hidden');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.card-container').forEach(card => observer.observe(card));
 
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -608,7 +648,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// --- BOTTOM NAVIGATION BAR (TÍCH HỢP TỔ 5) ---
+// --- BOTTOM NAVIGATION BAR ---
 // ==========================================
 
 const NAV_ICONS = {
@@ -619,7 +659,6 @@ const NAV_ICONS = {
     5: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: translateY(-1px);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`
 };
 
-// Đã cập nhật Tên Menu dài ra
 const GROUPS_NAMES = {
     1: "Tổ 1 (Xuân)",
     2: "Tổ 2 (Hạ)",
@@ -701,7 +740,6 @@ function updateBottomNav() {
 
     if (!nav) return;
 
-    // Chỉ tắt Menu khi lướt lên phần Cover (Sát đỉnh trang). Khi kéo xuống đáy, Menu không biến mất nữa!
     if (window.scrollY < 150) { 
         nav.classList.add('nav-hidden');
     } else {
@@ -713,13 +751,11 @@ function updateBottomNav() {
     
     groups.forEach(group => {
         const rect = group.getBoundingClientRect();
-        // Nới rộng vùng highlight active để bao phủ banner mỏng
         if (rect.top <= window.innerHeight * 0.7 && rect.bottom >= window.innerHeight * 0.3) {
             activeGroup = group.getAttribute('data-group');
         }
     });
 
-    // Nếu lướt xuống tận cùng trang thì tự động highlight Tổ 5
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
         activeGroup = '5';
     }
