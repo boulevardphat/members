@@ -313,8 +313,9 @@ function createCard(data, index) {
     const container = document.createElement('div');
     container.className = 'card-container scroll-hidden';
 
+    // 1. Chỉ hiện ảnh cung hoàng đạo nếu trên PC (!isMobileView)
     const zodiacFile = getZodiacImage(data.dob);
-    const zodiacImgTag = zodiacFile ? `<img src="image/${zodiacFile}" class="zodiac-bg" alt="Zodiac">` : '';
+    const zodiacImgTag = (zodiacFile && !isMobileView) ? `<img src="image/${zodiacFile}" class="zodiac-bg" alt="Zodiac">` : '';
     
     const headerSrc = GROUP_HEADERS[data.group] || "image/headers/header_template.jpg";
     const imgFileName = data.img.split('/').pop().replace(/\.[^/.]+$/, "");
@@ -322,7 +323,7 @@ function createCard(data, index) {
     const avatarFileName = data.img.split('/').pop();
     const labelStyle = `background-image: url('image/musiccover/${avatarFileName}');`;
     
-    // --- NẾU LÀ MOBILE, BỎ RENDERING ĐĨA NHẠC VÀ HEADER ---
+    // --- PC MỚI RENDER ĐĨA NHẠC VÀ HEADER ---
     const musicDiskHTML = isMobileView ? '' : `
         <div class="disk-container" data-song="${musicSrc}">
             <div class="disk-body">
@@ -338,6 +339,19 @@ function createCard(data, index) {
         </div>
     `;
 
+    // 2. Chỉ hiện chức vụ nếu có chức vụ và đang ở trên PC
+    const roleBadgeHTML = (data.role && !isMobileView) ? `<span class="role-badge">${data.role}</span>` : '';
+
+    // 3. Chỉ hiện biểu tượng lật thẻ nếu ở trên PC
+    const flipHintHTML = isMobileView ? '' : `
+        <div class="flip-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14l5-5-5-5"></path>
+                <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"></path>
+            </svg>
+        </div>
+    `;
+
     container.innerHTML = `
         <div class="card-inner">
             ${musicDiskHTML}
@@ -349,18 +363,13 @@ function createCard(data, index) {
                         <img src="${data.img}" alt="${data.name}" onerror="this.src='https://placehold.co/105x140?text=No+Image';">
                     </div>
                     <div class="info-area">
-                        <div class="field"><span class="label">Họ và tên:</span><span class="value">${data.name} ${data.role ? `<span class="role-badge">${data.role}</span>` : ''}</span></div>
+                        <div class="field"><span class="label">Họ và tên:</span><span class="value">${data.name} ${roleBadgeHTML}</span></div>
                         <div class="field"><span class="label">Ngày sinh:</span><span class="value">${data.dob || '---'}</span></div>
                         <div class="field"><span class="label">Lớp:</span><span class="value">${CLASS_NAME}</span></div>
                         <div class="keywords">${data.keywords.length > 0 ? data.keywords.map(k => `<span class="keyword">#${k}</span>`).join('') : '<span class="keyword">#12A2</span>'}</div>
                     </div>
                 </div>
-                <div class="flip-hint">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M15 14l5-5-5-5"></path>
-                        <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"></path>
-                    </svg>
-                </div>
+                ${flipHintHTML}
             </div>
             <div class="card-face card-back">
                 <div class="back-container">
@@ -387,7 +396,6 @@ function createCard(data, index) {
     const diskContainer = container.querySelector('.disk-container');
     const diskBody = container.querySelector('.disk-body');
     
-    // Chỉ thêm sự kiện phát nhạc cá nhân nếu thẻ trên PC (Có đĩa nhạc)
     if (diskBody) {
         diskBody.addEventListener('click', (e) => {
             e.stopPropagation(); 

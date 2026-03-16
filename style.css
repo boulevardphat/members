@@ -383,6 +383,9 @@ body {
     }
 }
 
+/* ========================================================
+   RESPONSIVE MOBILE LOGIC - CHUYỂN THẺ THÀNH CHIỀU DỌC 
+   ======================================================== */
 @media (max-width: 768px) {
     .site-header { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
     .header-logo-img { max-height: 50px; }
@@ -396,13 +399,13 @@ body {
     .group-title-text { margin-bottom: 30px; font-size: 3rem; }
     .cards-wrapper { flex-direction: column; align-items: center; justify-content: center; flex-wrap: nowrap; padding: 0; padding-bottom: 20px; gap: 30px; }
     
+    /* CHUYỂN THẺ SANG DẠNG DỌC (PORTRAIT) */
     .card-container { 
-        width: 90%; 
-        max-width: 450px;
-        height: auto;
-        aspect-ratio: 450 / 280;
-        margin: 0 !important; 
-        margin-bottom: 10px; 
+        width: 85%; 
+        max-width: 320px;
+        height: 440px; /* FIX: Đặt cứng chiều cao để form thẻ dọc không bị xẹp */
+        aspect-ratio: auto; 
+        margin: 0 auto 20px auto !important; 
         left: auto; 
         right: auto; 
         transform: none; 
@@ -412,31 +415,28 @@ body {
     .card-container:nth-child(odd) { transform: none; }
     .card-container:nth-child(even) { transform: none; }
     .card-container:hover { transform: translateY(-5px); z-index: 10; }
+    
     .footer-content { grid-template-columns: 1fr; gap: 30px; text-align: left; }
     .footer-desc { margin: 0; } 
 }
 
 /* --- CARD INTERNALS (3D LOGIC) --- */
+/* --- TÌM VÀ THAY ĐOẠN NÀY ĐỂ FIX LỖI 3D TRÊN IOS SAFARI --- */
+
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d; /* Bắt buộc cho iOS */
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    border-radius: 16px;
-}
-
-.card-container.is-focused {
-    position: fixed;
-    z-index: 9999 !important;
-    margin: 0 !important; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
     border-radius: 16px;
 }
 
 .card-container.is-focused.is-flipped .card-inner {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Bắt buộc cho iOS */
 }
 
 .card-face {
@@ -444,6 +444,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden; /* Khắc phục lỗi biến mất thẻ */
     border-radius: 16px; 
     background: var(--card-bg); 
     border: 1px solid var(--border-color);
@@ -452,14 +453,18 @@ body {
     flex-direction: column;
     overflow: hidden; 
     z-index: 10; 
+    transform: translate3d(0, 0, 0); /* Khắc phục lỗi chớp viền khi lật */
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .card-front { 
-    transform: translateZ(1px); 
+    transform: rotateY(0deg) translateZ(1px); 
+    -webkit-transform: rotateY(0deg) translateZ(1px);
 }
 
 .card-back {
     transform: rotateY(180deg) translateZ(1px);
+    -webkit-transform: rotateY(180deg) translateZ(1px);
     padding: 0;
     border-radius: 16px;
     overflow: hidden; 
@@ -1255,11 +1260,71 @@ a, button, .nav-link, .card-container, .disk-body, .feedback-btn {
     }
 }
 
-/* ==========================================
-   --- ĐIỀU CHỈNH CARD CONTENT CHO MOBILE ---
-   ========================================== */
+/* ========================================================
+   CSS CHI TIẾT TRONG THẺ KHI Ở MOBILE (BỐ CỤC DỌC)
+   ======================================================== */
 @media (max-width: 768px) {
+    /* Chuyển nội dung thẻ thành cột dọc (ảnh trên, chữ dưới) */
     .card-content {
-        justify-content: center; /* Căn giữa nội dung khi bị ẩn đi phần Header */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px 25px 20px;
+        text-align: center;
+        gap: 15px;
+    }
+
+    /* Ảnh đại diện được căn giữa và cho to ra xíu */
+    .photo-area {
+        width: 130px;
+        height: 170px;
+        margin-bottom: 5px;
+    }
+
+    /* Thông tin chữ căn giữa */
+    .info-area {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column; /* Label ở trên, Value ở dưới */
+        align-items: center;
+        margin-bottom: 12px;
+        width: 100%;
+    }
+
+    .label {
+        margin-bottom: 4px;
+    }
+
+    /* Text thông tin rớt dòng tự nhiên */
+    .value {
+        white-space: normal; 
+        word-wrap: break-word;
+        text-align: center;
+        font-size: 15px;
+        width: 100%;
+    }
+
+    /* Căn giữa 3 cái Hashtags, cho rớt dòng */
+    .keywords {
+        justify-content: center;
+        margin-top: 5px;
+        flex-wrap: wrap; 
+        gap: 8px;
+    }
+
+    .keyword {
+        font-size: 10px;
+        padding: 5px 12px;
+    }
+
+    /* Căn lề vừa vặn cho mặt sau khi đang lật */
+    .back-container {
+        padding: 25px 20px;
     }
 }
