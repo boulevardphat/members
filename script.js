@@ -679,7 +679,7 @@ const GROUPS_NAMES = {
     2: "Tổ 2 (Hạ)",
     3: "Tổ 3 (Thu)",
     4: "Tổ 4 (Đông)",
-    5: "A2 8/3 - Limited Edition"
+    5: "A2 8/3"
 };
 
 function createBottomNav() {
@@ -699,7 +699,11 @@ function createBottomNav() {
             e.preventDefault();
             const section = document.getElementById(`group-${groupNum}`);
             if (section) {
-                const y = section.getBoundingClientRect().top + window.pageYOffset - 90;
+                // Đo chiều cao thực tế của Header (dù là PC hay Mobile) và cộng thêm 15px để cách lề cho thoáng
+                const header = document.querySelector('.site-header');
+                const headerHeight = header ? header.offsetHeight : 90;
+                
+                const y = section.getBoundingClientRect().top + window.pageYOffset - headerHeight - 15;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         });
